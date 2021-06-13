@@ -50,13 +50,14 @@ decoder.on('focusOp', controls => {
     encoder.setFocus(focus)
 })
 decoder.on('focusMode', controls => {
-    const { operation } = controls
+    const { operation, mo } = controls
     const mode = operation === 'manual' ? 0 : operation === 'auto' ? 1 : 1 //default auto focus
     console.log(operation, mode)
     encoder.setFocusMode(mode)
 })
-decoder.on('focusSet', setPoint => {
-    setPoint = (0xe000 - (setPoint - 0x1000)) * 0xffff / 0xe000
+decoder.on('focusSet', controls => {
+    const { operation, target } = controls
+    setPoint = (0xe000 - (target - 0x1000)) * 0xffff / 0xe000
     //0x1000 in = 0xffff out, 0xf000 in = 0x0000 out
     console.log(operation, setPoint)
     encoder.setFocusPoint(setPoint)

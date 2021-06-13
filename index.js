@@ -49,6 +49,12 @@ decoder.on('focusOp', controls => {
     console.log(operation, speed, modifier, focus)
     encoder.setFocus(focus)
 })
+decoder.on('focusMode', controls => {
+    const { operation } = controls
+    const mode = operation === 'manual' ? 0 : operation === 'auto' ? 1 : 1 //default auto focus
+    console.log(operation, mode)
+    encoder.setFocusMode(mode)
+})
 
 if (process.argv[3] === 'udp') {
     const receiveSocket = createSocket('udp4', (msg, origin) => {

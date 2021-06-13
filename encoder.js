@@ -37,6 +37,15 @@ class PanasonicController {
             }
         })
     }
+    setFocusMode (m) {
+        console.log(`#D1${m}`)
+        axios.get('', {
+            params: {
+                cmd: `#D1${m}`,
+                res: 1
+            }
+        })
+    }
 }
 
 module.exports = { PanasonicController }

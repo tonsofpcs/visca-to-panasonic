@@ -49,9 +49,7 @@ decoder.on('focusOp', controls => {
     console.log(operation, speed, modifier, focus)
     encoder.setFocus(focus)
 })
-decoder.on('focusMode', controls => {
-    const { operation, mo } = controls
-    const mode = operation === 'manual' ? 0 : operation === 'auto' ? 1 : 1 //default auto focus
+decoder.on('focusMode', mode => {
     console.log(operation, mode)
     encoder.setFocusMode(mode)
 })

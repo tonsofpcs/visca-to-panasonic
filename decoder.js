@@ -168,14 +168,14 @@ class ViscaDecoder extends EventEmitter {
                 this.emit('focusOp', op)
             } else if (b3 == 0x38) { // auto/manual focus switch
                 if (b4 == 0x03) {
-                    op.operation = 'manual'
+                    op.mode = 'manual'
                 } else if (b4 == 0x02) {
-                    op.operation = 'auto'
+                    op.mode = 'auto'
                 } else if (b4 == 0x10) {
-                    op.operation = 'toggle'
+                    op.mode = 'toggle'
                 }
 
-                this.emit('focusMode', op)
+                this.emit('focusMode', mode)
             } else if (b3 == 0x18 && b4 == 0x02) { //focus set to infinity
                 const op = {}
                 op.setPoint = 0x1000 // Infinity, 1000 is far-end, F000 is near-end

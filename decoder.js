@@ -166,8 +166,7 @@ class ViscaDecoder extends EventEmitter {
                 }
 
                 this.emit('focusOp', op)
-            }
-            else if (b3 == 0x38) { // auto/manual focus switch
+            } else if (b3 == 0x38) { // auto/manual focus switch
                 if (b4 == 0x03) {
                     op.operation = 'manual'
                 } else if (b4 == 0x02) {
@@ -178,7 +177,7 @@ class ViscaDecoder extends EventEmitter {
 
                 this.emit('focusMode', op)
             }
-            
+
             // // Power
             // if (b3 == 0x00 && b4 == 0x02) msg_string += 'Power On';
             // else if (b3 == 0x00 && b4 == 0x03) msg_string += 'Power Off';

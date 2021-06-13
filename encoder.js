@@ -46,6 +46,18 @@ class PanasonicController {
             }
         })
     }
+    setFocusPoint (p) {
+        p = 0x555 + p * (0xfff - 0x555)/0xffff
+        //0xffff in = 0xfff out, 0x0000 in = 0x555 out
+        const ps = p.toString(16)
+        console.log(`#AXF${ps}h`)
+        axios.get('', {
+            params: {
+                cmd: `#AXF${ps}h`,
+                res: 1
+            }
+        })
+    }
 }
 
 module.exports = { PanasonicController }

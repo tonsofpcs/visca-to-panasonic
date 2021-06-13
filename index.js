@@ -55,6 +55,12 @@ decoder.on('focusMode', controls => {
     console.log(operation, mode)
     encoder.setFocusMode(mode)
 })
+decoder.on('focusSet', setPoint => {
+    setPoint = (0xe000 - (setPoint - 0x1000)) * 0xffff / 0xe000
+    //0x1000 in = 0xffff out, 0xf000 in = 0x0000 out
+    console.log(operation, setPoint)
+    encoder.setFocusPoint(setPoint)
+})
 
 if (process.argv[3] === 'udp') {
     const receiveSocket = createSocket('udp4', (msg, origin) => {

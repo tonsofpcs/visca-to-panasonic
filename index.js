@@ -21,8 +21,8 @@ decoder.on('panTiltOp', controls => {
     let pan = 50
     let tilt = 50
 
-    // convert speed from 23...0 to 0...49
-    const convert = (speed) => (speed / 23 - 1) * -1 * 49
+    // convert speed from 0...23 to 0...49
+    const convert = (speed) => (speed / 23) * 49
 
     panSpeed = convert(panSpeed)
     tiltSpeed = convert(tiltSpeed)

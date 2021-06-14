@@ -38,11 +38,11 @@ class PanasonicController {
         })
     }
     setFocusMode (m) {
-        const m = operation === 'manual' ? 0 : operation === 'auto' ? 1 : 1 //default auto focus
-        console.log(`#D1${m}`)
+        const ms = m === 'manual' ? 0 : m === 'auto' ? 1 : 1 //default auto focus
+        console.log(`#D1${ms}`)
         axios.get('', {
             params: {
-                cmd: `#D1${m}`,
+                cmd: `#D1${ms}`,
                 res: 1
             }
         })
